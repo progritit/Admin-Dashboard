@@ -829,27 +829,10 @@ svg {
     inset 0 0 18px rgba(88, 230, 255, 0.1);
 }
 
-.module-visual.radar {
-  border-radius: 50%;
-  background:
-    radial-gradient(circle, var(--gold-strong) 0 5%, transparent 6%),
-    repeating-radial-gradient(circle, transparent 0 15px, rgba(255,189,46,.35) 16px, transparent 17px 24px),
-    conic-gradient(from 0deg, rgba(255,189,46,.9) 0 8deg, transparent 9deg 360deg);
-}
-
 .module-visual.radar::before {
   inset: 0;
   border-radius: 50%;
   border: 1px solid rgba(255,189,46,.35);
-}
-
-.module-visual.shield span {
-  width: 62px;
-  height: 72px;
-  background: linear-gradient(180deg, rgba(88,230,255,.16), rgba(88,230,255,.04));
-  clip-path: polygon(50% 0, 92% 18%, 84% 75%, 50% 100%, 16% 75%, 8% 18%);
-  border: 1px solid rgba(88,230,255,.78);
-  box-shadow: inset 0 0 24px rgba(88,230,255,.13), 0 0 16px rgba(88,230,255,.22);
 }
 
 .module-visual.shield::before {
@@ -868,17 +851,6 @@ svg {
   border: 1px solid var(--cyan);
   border-radius: 4px;
   bottom: 21px;
-}
-
-.module-visual.archive span {
-  width: 54px;
-  height: 62px;
-  border-radius: 50% / 18%;
-  border: 1px solid rgba(255,189,46,.76);
-  background:
-    linear-gradient(rgba(255,189,46,.13), rgba(255,189,46,.03)),
-    repeating-linear-gradient(0deg, transparent 0 16px, rgba(255,189,46,.48) 17px 18px);
-  box-shadow: inset 0 0 18px rgba(255,189,46,.12), 0 0 14px rgba(255,189,46,.27);
 }
 
 .module-copy h3 {
