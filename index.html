@@ -1,29 +1,295 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solaris Command Center</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solaris Command Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="app-shell">
-        <aside class="sidebar">
-            <div class="brand">Solaris Command</div>
-        
-            <nav class="primary-nav"></nav>
-        
-            <nav class="secondary-nav"></nav>
+  <svg class="svg-sprite" aria-hidden="true" focusable="false">
+    <symbol id="icon-search" viewBox="0 0 24 24"><path d="M10.8 4a6.8 6.8 0 1 0 0 13.6A6.8 6.8 0 0 0 10.8 4Zm0 2a4.8 4.8 0 1 1 0 9.6 4.8 4.8 0 0 1 0-9.6Zm4.9 10.3 4 4-1.4 1.4-4-4 1.4-1.4Z"/></symbol>
+    <symbol id="icon-bell" viewBox="0 0 24 24"><path d="M12 22a2.8 2.8 0 0 0 2.7-2h-5.4A2.8 2.8 0 0 0 12 22ZM18 16v-5.2A6.1 6.1 0 0 0 13 5V3h-2v2a6.1 6.1 0 0 0-5 5.8V16l-2 2v1h16v-1l-2-2Zm-2 .8.2.2H7.8l.2-.2V11a4 4 0 0 1 8 0v5.8Z"/></symbol>
+    <symbol id="icon-sun" viewBox="0 0 24 24"><path d="M11 1h2v4h-2V1Zm0 18h2v4h-2v-4ZM3.5 4.9l1.4-1.4 2.8 2.8-1.4 1.4-2.8-2.8Zm12.8 12.8 1.4-1.4 2.8 2.8-1.4 1.4-2.8-2.8ZM1 11h4v2H1v-2Zm18 0h4v2h-4v-2ZM3.5 19.1l2.8-2.8 1.4 1.4-2.8 2.8-1.4-1.4ZM16.3 6.3l2.8-2.8 1.4 1.4-2.8 2.8-1.4-1.4ZM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6Z"/></symbol>
+    <symbol id="icon-user" viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm0 2c-4.4 0-8 2.2-8 5v1h16v-1c0-2.8-3.6-5-8-5Zm0 2c3.1 0 5.2 1.2 5.8 2H6.2c.6-.8 2.7-2 5.8-2Z"/></symbol>
+    <symbol id="icon-transmit" viewBox="0 0 24 24"><path d="M12 3a4 4 0 0 0-2 7.5V21h4V10.5A4 4 0 0 0 12 3Zm0 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4Zm-6.8.5 1.5 1.3a7 7 0 0 0 0 10.4l-1.5 1.3a9 9 0 0 1 0-13Zm13.6 0a9 9 0 0 1 0 13l-1.5-1.3a7 7 0 0 0 0-10.4l1.5-1.3Z"/></symbol>
+    <symbol id="icon-logs" viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6V2Zm8 2H8v16h10V8h-4V4Zm1.5 1.5V7H17l-1.5-1.5ZM10 11h6v2h-6v-2Zm0 4h6v2h-6v-2Z"/></symbol>
+    <symbol id="icon-target" viewBox="0 0 24 24"><path d="M11 2h2v3.1a7 7 0 0 1 5.9 5.9H22v2h-3.1a7 7 0 0 1-5.9 5.9V22h-2v-3.1A7 7 0 0 1 5.1 13H2v-2h3.1A7 7 0 0 1 11 5.1V2Zm1 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z"/></symbol>
+    <symbol id="icon-network" viewBox="0 0 24 24"><path d="M12 3a3 3 0 0 0-1 5.8v2.4l-4.2 2.4a3 3 0 1 0 1 1.7l4.2-2.4 4.2 2.4a3 3 0 1 0 1-1.7L13 11.2V8.8A3 3 0 0 0 12 3Zm0 2a1 1 0 1 1 0 2 1 1 0 0 1 0-2ZM5 15a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm14 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></symbol>
+    <symbol id="icon-gear" viewBox="0 0 24 24"><path d="M19.4 13.5c.1-.5.1-1 .1-1.5s0-1-.1-1.5l2-1.5-2-3.5-2.4 1a8 8 0 0 0-2.6-1.5L14 2h-4l-.4 2.5A8 8 0 0 0 7 6L4.6 5 2.6 8.5l2 1.5c-.1.5-.1 1-.1 1.5s0 1 .1 1.5l-2 1.5 2 3.5 2.4-1a8 8 0 0 0 2.6 1.5L10 22h4l.4-2.5A8 8 0 0 0 17 18l2.4 1 2-3.5-2-1.5ZM12 8a4 4 0 1 1 0 8 4 4 0 0 1 0-8Z"/></symbol>
+    <symbol id="icon-headset" viewBox="0 0 24 24"><path d="M12 3a8 8 0 0 0-8 8v6h5v-7H6.1A6 6 0 0 1 18 10h-3v7h3v1a2 2 0 0 1-2 2h-3v2h3a4 4 0 0 0 4-4v-7a8 8 0 0 0-8-8Z"/></symbol>
+    <symbol id="icon-shield" viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3Zm0 2.2 6 2.3V11c0 4-2.5 7.6-6 8.8A9.5 9.5 0 0 1 6 11V6.5l6-2.3Zm-1 10.4 5-5-1.4-1.4-3.6 3.6-1.6-1.6L8 11.6l3 3Z"/></symbol>
+    <symbol id="icon-upload" viewBox="0 0 24 24"><path d="M11 16h2V8.8l3.1 3.1 1.4-1.4L12 5l-5.5 5.5 1.4 1.4L11 8.8V16Zm-5 2h12v2H6v-2Z"/></symbol>
+    <symbol id="icon-share" viewBox="0 0 24 24"><path d="M18 16.1a3 3 0 0 0-2.2 1L8.9 13a3.2 3.2 0 0 0 0-2l6.9-4A3 3 0 1 0 15 5c0 .3 0 .7.1 1L8.2 10a3 3 0 1 0 0 4l6.9 4a3 3 0 1 0 2.9-1.9ZM18 4a1 1 0 1 1 0 2 1 1 0 0 1 0-2ZM6 11a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm12 7a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></symbol>
+    <symbol id="icon-star" viewBox="0 0 24 24"><path d="m12 2.8 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-2.9L6.4 20l1.1-6.2L3 9.4l6.2-.9L12 2.8Zm0 4.5-1.5 3-3.4.5 2.5 2.4-.6 3.4 3-1.6 3 1.6-.6-3.4 2.5-2.4-3.4-.5-1.5-3Z"/></symbol>
+    <symbol id="icon-eye" viewBox="0 0 24 24"><path d="M12 5c5 0 8.5 4.1 9.6 6.4.2.4.2.8 0 1.2C20.5 14.9 17 19 12 19s-8.5-4.1-9.6-6.4a1.4 1.4 0 0 1 0-1.2C3.5 9.1 7 5 12 5Zm0 2c-3.8 0-6.5 3-7.6 5 1.1 2 3.8 5 7.6 5s6.5-3 7.6-5c-1.1-2-3.8-5-7.6-5Zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6Z"/></symbol>
+    <symbol id="icon-wave" viewBox="0 0 24 24"><path d="M2 13h3l2-8 4 16 3-11 2 5h6v2h-7.4l-.4-1-2.9 10L7 11.4 6.5 15H2v-2Z"/></symbol>
+    <symbol id="icon-grid" viewBox="0 0 24 24"><path d="M4 4h7v7H4V4Zm9 0h7v7h-7V4ZM4 13h7v7H4v-7Zm9 0h7v7h-7v-7Z"/></symbol>
+    <symbol id="icon-list" viewBox="0 0 24 24"><path d="M4 6h16v2H4V6Zm0 5h16v2H4v-2Zm0 5h16v2H4v-2Z"/></symbol>
+  </svg>
+
+  <div class="app-shell">
+    <aside class="sidebar glass-panel">
+      <div class="brand-block">
+        <div class="solar-logo" aria-hidden="true">
+          <span></span>
+        </div>
+        <p class="brand-title">Solaris</p>
+        <p class="brand-subtitle">Command Center</p>
+        <div class="brand-line"></div>
+      </div>
+
+      <nav class="nav-stack primary-nav" aria-label="Primary navigation">
+        <a class="nav-link active" href="#"><svg><use href="#icon-sun"></use></svg><span>Core</span></a>
+        <a class="nav-link" href="#"><svg><use href="#icon-user"></use></svg><span>Operator</span></a>
+        <a class="nav-link" href="#"><svg><use href="#icon-transmit"></use></svg><span>Transmissions</span></a>
+        <a class="nav-link" href="#"><svg><use href="#icon-logs"></use></svg><span>Logs</span></a>
+        <a class="nav-link" href="#"><svg><use href="#icon-target"></use></svg><span>Missions</span></a>
+        <a class="nav-link" href="#"><svg><use href="#icon-network"></use></svg><span>Network</span></a>
+      </nav>
+
+      <div class="sidebar-divider"></div>
+
+      <nav class="nav-stack secondary-nav" aria-label="Secondary navigation">
+        <a class="nav-link" href="#"><svg><use href="#icon-gear"></use></svg><span>Calibration</span></a>
+        <a class="nav-link" href="#"><svg><use href="#icon-headset"></use></svg><span>Assistance</span></a>
+        <a class="nav-link" href="#"><svg><use href="#icon-shield"></use></svg><span>Shield</span></a>
+      </nav>
+
+      <section class="network-status mini-panel" aria-label="Network status">
+        <div class="mini-orbit" aria-hidden="true"><span></span></div>
+        <div class="status-copy">
+          <span class="eyebrow">Network Status</span>
+          <strong>Optimal</strong>
+          <span class="stat-label">Solar Flux</span>
+          <div class="meter"><span class="meter-gold" style="width: 87%"></span></div>
+          <span class="stat-value gold">87%</span>
+          <span class="stat-label">Node Sync</span>
+          <div class="meter"><span class="meter-cyan" style="width: 98.6%"></span></div>
+          <span class="stat-value cyan">98.6%</span>
+        </div>
+      </section>
+    </aside>
+
+    <div class="page-shell">
+      <header class="topbar glass-panel">
+        <label class="search-field" for="search">
+          <svg><use href="#icon-search"></use></svg>
+          <input id="search" type="search" placeholder="Search modules, nodes, or transmissions..." />
+        </label>
+
+        <div class="operator-menu">
+          <button class="icon-button notification-button" aria-label="Notifications">
+            <svg><use href="#icon-bell"></use></svg>
+            <span class="notification-dot"></span>
+          </button>
+          <div class="small-avatar" aria-hidden="true"><span></span></div>
+          <strong>Morgan Oakley</strong>
+          <span class="chevron">⌄</span>
+        </div>
+      </header>
+
+      <main class="dashboard-grid">
+        <section class="welcome-panel glass-panel">
+          <div class="hero-avatar" aria-hidden="true">
+            <span class="helmet"></span>
+          </div>
+          <div class="welcome-copy">
+            <p>Welcome back,</p>
+            <h1>Morgan Oakley <span>(@morgan)</span></h1>
+          </div>
+          <div class="orbital-lines" aria-hidden="true"></div>
+          <div class="action-row">
+            <button class="action-button gold"><svg><use href="#icon-sun"></use></svg>New Mission</button>
+            <button class="action-button teal"><svg><use href="#icon-upload"></use></svg>Upload Signal</button>
+            <button class="action-button blue"><svg><use href="#icon-share"></use></svg>Share Node</button>
+          </div>
+        </section>
+
+        <section class="modules-section glass-panel">
+          <div class="section-header">
+            <div class="section-title-group">
+              <svg><use href="#icon-sun"></use></svg>
+              <h2>Active Modules</h2>
+            </div>
+            <div class="section-controls" aria-label="View controls">
+              <svg><use href="#icon-grid"></use></svg>
+              <svg><use href="#icon-list"></use></svg>
+            </div>
+          </div>
+
+          <div class="module-grid">
+            <article class="module-card">
+              <div class="module-visual portal" aria-hidden="true"><span></span></div>
+              <div class="module-copy">
+                <h3>Solar Access Portal</h3>
+                <p>Secure gateway for network entry and identity verification across the Solaris Network. Monitor access flows and node integrity.</p>
+              </div>
+              <div class="module-actions" aria-label="Card actions">
+                <button><svg><use href="#icon-star"></use></svg></button>
+                <button><svg><use href="#icon-eye"></use></svg></button>
+                <button><svg><use href="#icon-share"></use></svg></button>
+              </div>
+            </article>
+
+            <article class="module-card">
+              <div class="module-visual cube" aria-hidden="true"><span></span></div>
+              <div class="module-copy">
+                <h3>Cyber-Solar Calculator</h3>
+                <p>Compute solar energy, node output, and network efficiency in real time. Optimize balance between power and performance.</p>
+              </div>
+              <div class="module-actions" aria-label="Card actions">
+                <button><svg><use href="#icon-star"></use></svg></button>
+                <button><svg><use href="#icon-eye"></use></svg></button>
+                <button><svg><use href="#icon-share"></use></svg></button>
+              </div>
+            </article>
+
+            <article class="module-card">
+              <div class="module-visual sketch" aria-hidden="true"><span></span></div>
+              <div class="module-copy">
+                <h3>Solar Sketch Studio</h3>
+                <p>Create and prototype visual systems for interfaces, dashboards, and node layouts with live grid alignment tools.</p>
+              </div>
+              <div class="module-actions" aria-label="Card actions">
+                <button><svg><use href="#icon-star"></use></svg></button>
+                <button><svg><use href="#icon-eye"></use></svg></button>
+                <button><svg><use href="#icon-share"></use></svg></button>
+              </div>
+            </article>
+
+            <article class="module-card">
+              <div class="module-visual radar" aria-hidden="true"><span></span></div>
+              <div class="module-copy">
+                <h3>Aurelium Landing Grid</h3>
+                <p>Track and manage landing points, orbital routes, and landing clearances within the Aurelium sector. Stay aligned and safe.</p>
+              </div>
+              <div class="module-actions" aria-label="Card actions">
+                <button><svg><use href="#icon-star"></use></svg></button>
+                <button><svg><use href="#icon-eye"></use></svg></button>
+                <button><svg><use href="#icon-share"></use></svg></button>
+              </div>
+            </article>
+
+            <article class="module-card">
+              <div class="module-visual shield" aria-hidden="true"><span></span></div>
+              <div class="module-copy">
+                <h3>Node Authentication System</h3>
+                <p>Manage node credentials, encryption keys, and multi-layer authentication protocols across the Solaris Network.</p>
+              </div>
+              <div class="module-actions" aria-label="Card actions">
+                <button><svg><use href="#icon-star"></use></svg></button>
+                <button><svg><use href="#icon-eye"></use></svg></button>
+                <button><svg><use href="#icon-share"></use></svg></button>
+              </div>
+            </article>
+
+            <article class="module-card">
+              <div class="module-visual archive" aria-hidden="true"><span></span></div>
+              <div class="module-copy">
+                <h3>Signal Archive</h3>
+                <p>Browse, filter, and restore historical transmissions and data logs. Preserve network memory and insights.</p>
+              </div>
+              <div class="module-actions" aria-label="Card actions">
+                <button><svg><use href="#icon-star"></use></svg></button>
+                <button><svg><use href="#icon-eye"></use></svg></button>
+                <button><svg><use href="#icon-share"></use></svg></button>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <aside class="right-rail">
+          <section class="rail-panel glass-panel broadcasts-panel">
+            <div class="rail-title">
+              <svg><use href="#icon-transmit"></use></svg>
+              <h2>System Broadcasts</h2>
+            </div>
+
+            <article class="broadcast-item green">
+              <span class="item-dot"></span>
+              <div>
+                <header><h3>Core Update Deployed</h3><time>10m ago</time></header>
+                <p>The Solaris core has been updated to v2.7.4. All nodes operating within optimal parameters.</p>
+              </div>
+            </article>
+
+            <article class="broadcast-item cyan">
+              <span class="item-dot"></span>
+              <div>
+                <header><h3>New Node Registered</h3><time>32m ago</time></header>
+                <p>A new access node @access-node has joined the network and completed verification.</p>
+              </div>
+            </article>
+
+            <article class="broadcast-item gold">
+              <span class="item-dot"></span>
+              <div>
+                <header><h3>Security Layer Improved</h3><time>1h ago</time></header>
+                <p>Advanced encryption protocols have been enhanced. Network resilience increased.</p>
+              </div>
+            </article>
+
+            <a class="panel-link" href="#">View all broadcasts <span>›</span></a>
+          </section>
+
+          <section class="rail-panel glass-panel signal-panel">
+            <div class="rail-title">
+              <svg><use href="#icon-wave"></use></svg>
+              <h2>Signal Feed</h2>
+            </div>
+
+            <article class="signal-row">
+              <div class="feed-avatar aurelium" aria-hidden="true"></div>
+              <div>
+                <header><h3>@aurelium</h3><time>2m ago</time></header>
+                <p>Interface signal stabilized</p>
+              </div>
+              <span class="status-dot green"></span>
+            </article>
+
+            <article class="signal-row">
+              <div class="feed-avatar access" aria-hidden="true"></div>
+              <div>
+                <header><h3>@access-node</h3><time>7m ago</time></header>
+                <p>Portal online</p>
+              </div>
+              <span class="status-dot cyan"></span>
+            </article>
+
+            <article class="signal-row">
+              <div class="feed-avatar sketch-feed" aria-hidden="true"></div>
+              <div>
+                <header><h3>@solar-sketch</h3><time>12m ago</time></header>
+                <p>Visual grid calibrated</p>
+              </div>
+              <span class="status-dot gold"></span>
+            </article>
+
+            <article class="signal-row">
+              <div class="feed-avatar calc" aria-hidden="true"></div>
+              <div>
+                <header><h3>@calc-core</h3><time>18m ago</time></header>
+                <p>Logic module synced</p>
+              </div>
+              <span class="status-dot green"></span>
+            </article>
+
+            <a class="panel-link" href="#">View full signal feed <span>›</span></a>
+          </section>
         </aside>
 
-        <div class="page">
-            <header class="header">
-                <div class="header-top"></div>
-                <div class="header-bottom"></div>
-            </header>
-
-            <main class="main-content"></main>
-        </div>
+        <footer class="solar-footer">
+          <span></span>
+          <svg><use href="#icon-sun"></use></svg>
+          <strong>Solaris Network</strong>
+          <span></span>
+        </footer>
+      </main>
     </div>
+  </div>
 </body>
 </html>
