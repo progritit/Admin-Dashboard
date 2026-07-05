@@ -1,0 +1,76 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Solaris logo mark</title>
+  <desc id="desc">A futuristic solar emblem with a luminous center, orbital rings, and radiant spokes in gold tones.</desc>
+  <defs>
+    <radialGradient id="coreGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(128 128) rotate(90) scale(88)">
+      <stop offset="0" stop-color="#FFF6C9"/>
+      <stop offset="0.28" stop-color="#FFD86B"/>
+      <stop offset="0.58" stop-color="#FFBD2E"/>
+      <stop offset="1" stop-color="#D98A00" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="innerCore" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(128 128) rotate(90) scale(28)">
+      <stop offset="0" stop-color="#FFFDF2"/>
+      <stop offset="0.45" stop-color="#FFE89B"/>
+      <stop offset="1" stop-color="#FFBD2E"/>
+    </radialGradient>
+    <linearGradient id="ringStroke" x1="56" y1="56" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFE08B"/>
+      <stop offset="0.5" stop-color="#FFBD2E"/>
+      <stop offset="1" stop-color="#F39A00"/>
+    </linearGradient>
+    <filter id="softGlow" x="-60" y="-60" width="376" height="376" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <g filter="url(#softGlow)">
+    <circle cx="128" cy="128" r="82" fill="url(#coreGlow)" opacity="0.72"/>
+  </g>
+
+  <!-- Outer rays -->
+  <g stroke="url(#ringStroke)" stroke-width="5" stroke-linecap="round" opacity="0.95">
+    <path d="M128 16V44"/>
+    <path d="M128 212V240"/>
+    <path d="M16 128H44"/>
+    <path d="M212 128H240"/>
+    <path d="M48.8 48.8L68.6 68.6"/>
+    <path d="M187.4 187.4L207.2 207.2"/>
+    <path d="M48.8 207.2L68.6 187.4"/>
+    <path d="M187.4 68.6L207.2 48.8"/>
+  </g>
+
+  <!-- Secondary shorter rays -->
+  <g stroke="#FFC94E" stroke-width="3" stroke-linecap="round" opacity="0.8">
+    <path d="M128 30V54"/>
+    <path d="M128 202V226"/>
+    <path d="M30 128H54"/>
+    <path d="M202 128H226"/>
+    <path d="M74 36L84 58"/>
+    <path d="M172 198L182 220"/>
+    <path d="M36 74L58 84"/>
+    <path d="M198 172L220 182"/>
+    <path d="M36 182L58 172"/>
+    <path d="M198 84L220 74"/>
+    <path d="M74 220L84 198"/>
+    <path d="M172 58L182 36"/>
+  </g>
+
+  <!-- Orbital structure -->
+  <circle cx="128" cy="128" r="62" stroke="url(#ringStroke)" stroke-width="5"/>
+  <circle cx="128" cy="128" r="50" stroke="#FFE7A5" stroke-opacity="0.9" stroke-width="2.5"/>
+  <circle cx="128" cy="128" r="36" stroke="#FFBD2E" stroke-opacity="0.75" stroke-width="2"/>
+
+  <!-- Small orbital nodes -->
+  <circle cx="128" cy="66" r="4" fill="#FFF4C0"/>
+  <circle cx="190" cy="128" r="4" fill="#FFF4C0"/>
+  <circle cx="128" cy="190" r="4" fill="#FFF4C0"/>
+  <circle cx="66" cy="128" r="4" fill="#FFF4C0"/>
+
+  <!-- Core -->
+  <circle cx="128" cy="128" r="22" fill="url(#innerCore)"/>
+  <circle cx="128" cy="128" r="10" fill="#FFFDF3" opacity="0.95"/>
+</svg>
