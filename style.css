@@ -1,3 +1,13 @@
+/*
+  SOLARIS COMMAND CENTER STYLES
+  The CSS is organized from general rules to specific components, then responsive rules.
+*/
+
+/*
+  Design tokens
+  These custom properties centralize the colors, fonts, radii, shadows, and glow effects.
+  Changing a value here updates the whole visual system.
+*/
 :root {
   --bg-deep: #030912;
   --bg-navy: #061322;
@@ -26,6 +36,7 @@
   --font-display: "Space Grotesk", "Inter", sans-serif;
 }
 
+/* Global box sizing reset: makes width/height calculations easier and more predictable. */
 * {
   box-sizing: border-box;
 }
@@ -34,6 +45,10 @@ html {
   min-height: 100%;
 }
 
+/*
+  Page background
+  The body combines radial gradients and a dark linear gradient to create the cosmic base.
+*/
 body {
   min-height: 100vh;
   margin: 0;
@@ -46,6 +61,10 @@ body {
   overflow-x: hidden;
 }
 
+/*
+  Decorative background layers
+  ::before adds the subtle grid, while ::after adds star-like particles.
+*/
 body::before,
 body::after {
   content: "";
@@ -71,6 +90,7 @@ body::after {
   opacity: .28;
 }
 
+/* Keep buttons, links, and inputs visually consistent with the page font. */
 button,
 a,
 input {
@@ -86,6 +106,7 @@ button {
   cursor: pointer;
 }
 
+/* Default icon sizing. Most interface icons inherit color from their parent. */
 svg {
   width: 1.35rem;
   height: 1.35rem;
@@ -93,6 +114,7 @@ svg {
   flex: 0 0 auto;
 }
 
+/* Hides the SVG sprite definitions while keeping the symbols available for <use>. */
 .svg-sprite {
   position: absolute;
   width: 0;
@@ -100,6 +122,10 @@ svg {
   overflow: hidden;
 }
 
+/*
+  Reusable glass panel effect
+  Used on the sidebar, topbar, cards, rail panels, and footer for visual consistency.
+*/
 .glass-panel {
   position: relative;
   border: 1px solid var(--line);
@@ -122,6 +148,7 @@ svg {
   opacity: .45;
 }
 
+/* Main dashboard shell: desktop layout = sidebar + page content. */
 .app-shell {
   min-height: 100vh;
   display: grid;
@@ -130,6 +157,7 @@ svg {
   padding: 10px;
 }
 
+/* Sidebar layout: brand area, navigation groups, and bottom status widget. */
 .sidebar {
   display: grid;
   grid-template-rows: auto auto auto auto 1fr;
@@ -149,12 +177,14 @@ svg {
   pointer-events: none;
 }
 
+/* Brand area at the top of the sidebar. */
 .brand-block {
   position: relative;
   z-index: 1;
   text-align: center;
 }
 
+/* Real SVG logo image used in the current version. */
 .brand-logo {
   display: block;
   width: 88px;
@@ -164,7 +194,10 @@ svg {
   filter: drop-shadow(0 0 18px rgba(255, 190, 46, 0.75));
 }
 
-/* SOLAR-LOGO, A FALLBACK */
+/*
+  CSS fallback logo
+  This old CSS-generated logo is kept as a backup. The current HTML uses .brand-logo instead.
+*/
 
 .solar-logo {
   width: 88px;
@@ -206,6 +239,7 @@ svg {
   box-shadow: 0 0 24px 7px rgba(255,189,46,.75);
 }
 
+/* Wordmark typography for “Solaris / Command Center”. */
 .brand-title,
 .brand-subtitle {
   margin: 0;
@@ -238,6 +272,7 @@ svg {
   box-shadow: var(--glow-gold);
 }
 
+/* Navigation stacks use grid because each group is a vertical list of repeated items. */
 .nav-stack {
   position: relative;
   z-index: 1;
@@ -245,6 +280,7 @@ svg {
   gap: 10px;
 }
 
+/* Individual navigation links: icon column + label column. */
 .nav-link {
   position: relative;
   display: grid;
@@ -303,6 +339,7 @@ svg {
   opacity: .6;
 }
 
+/* Mini system status panel at the bottom of the sidebar. */
 .network-status {
   z-index: 1;
   align-self: end;
@@ -316,6 +353,7 @@ svg {
   border: 1px solid rgba(126, 207, 244, 0.16);
 }
 
+/* Decorative orbit graphic inside the status panel. */
 .mini-orbit {
   position: relative;
   width: 92px;
@@ -412,6 +450,7 @@ svg {
 .gold { color: var(--gold); }
 .cyan { color: var(--cyan); }
 
+/* Right-side page shell: topbar first, dashboard content below. */
 .page-shell {
   display: grid;
   grid-template-rows: 82px 1fr;
@@ -419,6 +458,7 @@ svg {
   min-width: 0;
 }
 
+/* Topbar grid: search area + operator menu. */
 .topbar {
   display: grid;
   grid-template-columns: minmax(280px, 620px) auto;
@@ -429,6 +469,7 @@ svg {
   border-radius: var(--radius-lg);
 }
 
+/* Search field styling. It is currently visual/static, but structurally ready for JS later. */
 .search-field {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -457,6 +498,7 @@ svg {
   color: rgba(213,226,236,.72);
 }
 
+/* Operator menu in the topbar: notification, avatar, name, dropdown mark. */
 .operator-menu {
   position: relative;
   z-index: 1;
@@ -482,6 +524,7 @@ svg {
   color: var(--text);
 }
 
+/* Small glowing dots used for notifications and status indicators. */
 .notification-dot,
 .status-dot,
 .item-dot {
@@ -498,6 +541,21 @@ svg {
   background: var(--gold);
 }
 
+/* Real image avatars used in the Signal Feed rows. */
+.signal-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(88, 230, 255, 0.35);
+  background: rgba(3, 13, 24, 0.9);
+  box-shadow:
+    0 0 14px rgba(88, 230, 255, 0.22),
+    0 0 10px rgba(255, 189, 46, 0.16);
+  flex: 0 0 auto;
+}
+
+/* Shared behavior for operator avatar images. */
 .small-avatar,
 .hero-avatar {
   display: block;
@@ -506,6 +564,7 @@ svg {
 
 .small-avatar,
 .hero-avatar,
+/* Legacy CSS-generated feed avatars. The current HTML uses .signal-avatar images instead. */
 .feed-avatar {
   position: relative;
   overflow: hidden;
@@ -526,6 +585,7 @@ svg {
   font-size: 1.4rem;
 }
 
+/* Main dashboard layout: modules on the left, right rail on the right, footer below. */
 .dashboard-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 390px;
@@ -534,6 +594,7 @@ svg {
   min-width: 0;
 }
 
+/* Welcome banner with avatar, greeting, decorative orbit, and action buttons. */
 .welcome-panel {
   grid-column: 1 / -1;
   position: relative;
@@ -580,6 +641,7 @@ svg {
   font-weight: 600;
 }
 
+/* Decorative orbital rings behind the welcome text. */
 .orbital-lines {
   position: absolute;
   inset: 7% 32% auto auto;
@@ -613,6 +675,7 @@ svg {
   box-shadow: var(--glow-gold);
 }
 
+/* Action buttons container. Flexbox is ideal here because buttons can wrap naturally. */
 .action-row {
   z-index: 1;
   display: flex;
@@ -656,6 +719,7 @@ svg {
   box-shadow: inset 0 0 18px rgba(88,230,255,.10), 0 0 16px rgba(88,230,255,.12);
 }
 
+/* Shared spacing for large dashboard panels. */
 .modules-section,
 .rail-panel {
   border-radius: var(--radius-md);
@@ -710,6 +774,7 @@ svg {
   color: var(--gold);
 }
 
+/* Active Modules grid: two columns on desktop, one column on smaller screens. */
 .module-grid {
   position: relative;
   z-index: 1;
@@ -718,6 +783,7 @@ svg {
   gap: 16px;
 }
 
+/* Module card layout: emblem image + text + action icons. */
 .module-card {
   position: relative;
   min-height: 196px;
@@ -736,6 +802,7 @@ svg {
   transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
 }
 
+/* Solar glow strip on the left edge of each module card. */
 .module-card::before {
   content: "";
   position: absolute;
@@ -745,6 +812,7 @@ svg {
   box-shadow: 0 0 16px rgba(255,189,46,.96);
 }
 
+/* Subtle internal grid texture inside each module card. */
 .module-card::after {
   content: "";
   position: absolute;
@@ -763,13 +831,16 @@ svg {
   box-shadow: 0 18px 42px rgba(0,0,0,.34), 0 0 18px rgba(255,189,46,.08);
 }
 
+/* Keep card content above decorative pseudo-elements. */
 .module-visual,
 .module-copy,
+/* Card action icons: favorite, view, share. */
 .module-actions {
   position: relative;
   z-index: 1;
 }
 
+/* Base area originally used for CSS-generated module icons. */
 .module-visual {
   align-self: center;
   width: 82px;
@@ -787,6 +858,7 @@ svg {
   position: absolute;
 }
 
+/* Legacy CSS-generated module icon. Kept as fallback/reference after replacing icons with images. */
 .module-visual.portal {
   border-radius: 50%;
   background:
@@ -815,6 +887,7 @@ svg {
     inset 0 0 18px rgba(255, 189, 46, 0.12);
 }
 
+/* Current real generated emblem images used by module cards. */
 .module-visual.module-emblem {
   display: block;
   width: 104px;
@@ -853,6 +926,7 @@ svg {
   bottom: 21px;
 }
 
+/* Module text hierarchy. */
 .module-copy h3 {
   margin: 2px 0 10px;
   color: #fff;
@@ -887,6 +961,7 @@ svg {
   transform: translateY(-2px);
 }
 
+/* Right rail: System Broadcasts and Signal Feed panels. */
 .right-rail {
   grid-column: 2;
   grid-row: 2;
@@ -913,12 +988,15 @@ svg {
   text-transform: uppercase;
 }
 
+/* Shared positioning for compact right-rail list items. */
 .broadcast-item,
+/* Signal Feed row layout: avatar + text + status dot. */
 .signal-row {
   position: relative;
   z-index: 1;
 }
 
+/* Broadcast item layout: colored status dot + text block. */
 .broadcast-item {
   display: grid;
   grid-template-columns: 22px 1fr;
@@ -971,6 +1049,7 @@ svg {
 .broadcast-item.gold .item-dot,
 .status-dot.gold { background: var(--gold); color: var(--gold); }
 
+/* Small call-to-action links at the bottom of rail panels. */
 .panel-link {
   position: relative;
   z-index: 1;
@@ -1042,6 +1121,7 @@ svg {
   height: 6px;
 }
 
+/* Decorative internal footer inside the dashboard grid. */
 .solar-footer {
   grid-column: 1 / -1;
   position: relative;
@@ -1066,6 +1146,7 @@ svg {
   filter: drop-shadow(var(--glow-gold));
 }
 
+/* Real site footer below the dashboard: copyright, brand, GitHub and LinkedIn links. */
 .site-footer {
   position: relative;
   z-index: 1;
@@ -1197,6 +1278,7 @@ svg {
   fill: currentColor;
 }
 
+/* Footer-specific responsive behavior. */
 @media (max-width: 760px) {
   .site-footer {
     grid-template-columns: 1fr;
@@ -1212,6 +1294,10 @@ svg {
 }
 
 
+/*
+  Medium desktop / laptop layout
+  The sidebar becomes icon-only and the right rail moves below the module cards.
+*/
 @media (max-width: 1200px) {
   .app-shell {
     grid-template-columns: 92px 1fr;
@@ -1262,6 +1348,10 @@ svg {
   }
 }
 
+/*
+  Tablet layout
+  The sidebar becomes a top block, and all main dashboard sections stack vertically.
+*/
 @media (max-width: 850px) {
   .app-shell {
     grid-template-columns: 1fr;
@@ -1348,6 +1438,10 @@ svg {
   }
 }
 
+/*
+  Mobile layout
+  Reduce columns, hide non-essential topbar text, and let cards stack naturally.
+*/
 @media (max-width: 560px) {
   .primary-nav {
     grid-template-columns: repeat(2, minmax(0, 1fr));

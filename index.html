@@ -10,6 +10,12 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!--
+    SVG ICON SPRITE
+    These <symbol> elements define reusable icons once at the top of the document.
+    Later in the page, each icon is displayed with <svg><use href="#icon-name"></use></svg>.
+    This avoids separate icon files and keeps the interface icons easy to style with CSS.
+  -->
   <svg class="svg-sprite" aria-hidden="true" focusable="false">
     <symbol id="icon-search" viewBox="0 0 24 24"><path d="M10.8 4a6.8 6.8 0 1 0 0 13.6A6.8 6.8 0 0 0 10.8 4Zm0 2a4.8 4.8 0 1 1 0 9.6 4.8 4.8 0 0 1 0-9.6Zm4.9 10.3 4 4-1.4 1.4-4-4 1.4-1.4Z"/></symbol>
     <symbol id="icon-bell" viewBox="0 0 24 24"><path d="M12 22a2.8 2.8 0 0 0 2.7-2h-5.4A2.8 2.8 0 0 0 12 22ZM18 16v-5.2A6.1 6.1 0 0 0 13 5V3h-2v2a6.1 6.1 0 0 0-5 5.8V16l-2 2v1h16v-1l-2-2Zm-2 .8.2.2H7.8l.2-.2V11a4 4 0 0 1 8 0v5.8Z"/></symbol>
@@ -31,8 +37,15 @@
     <symbol id="icon-list" viewBox="0 0 24 24"><path d="M4 6h16v2H4V6Zm0 5h16v2H4v-2Zm0 5h16v2H4v-2Z"/></symbol>
   </svg>
 
+  <!--
+    MAIN APP SHELL
+    This is the main two-column dashboard layout: sidebar on the left, page content on the right.
+    CSS Grid handles this large structure in .app-shell.
+  -->
   <div class="app-shell">
+    <!-- Sidebar: brand, navigation, and the small network status widget. -->
     <aside class="sidebar glass-panel">
+      <!-- Project identity area: logo, title, subtitle, and decorative divider. -->
       <div class="brand-block">
         <img class="brand-logo" src="./assets/images/solarislogo.svg" alt="Solaris logo"/>
         <p class="brand-title">Solaris</p>
@@ -40,6 +53,7 @@
         <div class="brand-line"></div>
       </div>
 
+      <!-- Main navigation. These links are placeholders for now, but the structure is ready for future pages. -->
       <nav class="nav-stack primary-nav" aria-label="Primary navigation">
         <a class="nav-link active" href="#"><svg><use href="#icon-sun"></use></svg><span>Core</span></a>
         <a class="nav-link" href="#"><svg><use href="#icon-user"></use></svg><span>Operator</span></a>
@@ -51,12 +65,14 @@
 
       <div class="sidebar-divider"></div>
 
+      <!-- Secondary navigation for settings/support/security-style sections. -->
       <nav class="nav-stack secondary-nav" aria-label="Secondary navigation">
         <a class="nav-link" href="#"><svg><use href="#icon-gear"></use></svg><span>Calibration</span></a>
         <a class="nav-link" href="#"><svg><use href="#icon-headset"></use></svg><span>Assistance</span></a>
         <a class="nav-link" href="#"><svg><use href="#icon-shield"></use></svg><span>Shield</span></a>
       </nav>
 
+      <!-- Sidebar status panel: a small decorative system-health summary. -->
       <section class="network-status mini-panel" aria-label="Network status">
         <div class="mini-orbit" aria-hidden="true"><span></span></div>
         <div class="status-copy">
@@ -72,30 +88,40 @@
       </section>
     </aside>
 
+    <!-- Right side of the dashboard: top bar + main dashboard content. -->
     <div class="page-shell">
+      <!-- Top bar: search field on the left, notifications and operator identity on the right. -->
       <header class="topbar glass-panel">
+        <!-- Search is visual/static for now. It can become functional later with JavaScript. -->
         <label class="search-field" for="search">
           <svg><use href="#icon-search"></use></svg>
           <input id="search" type="search" placeholder="Search modules, nodes, or transmissions..." />
         </label>
 
+        <!-- Operator menu: notification button, avatar, name, and dropdown indicator. -->
         <div class="operator-menu">
           <button class="icon-button notification-button" aria-label="Notifications">
             <svg><use href="#icon-bell"></use></svg>
             <span class="notification-dot"></span>
           </button>
-          <img class="small-avatar" src="./assets/images/operator-avatar-emblem.png" alt="Morgan Oakley operator avatar"/>
-          <strong>Morgan Oakley</strong>
+          <img class="small-avatar" src="./assets/images/operator-avatar-emblem.png" alt="Clebson Costa operator avatar"/>
+          <strong>Clebson Costa</strong>
           <span class="chevron">⌄</span>
         </div>
       </header>
 
+      <!--
+        DASHBOARD GRID
+        This is the main dashboard area. It contains the welcome banner, active modules,
+        the right rail panels, and the internal Solaris Network footer.
+      -->
       <main class="dashboard-grid">
+        <!-- Welcome banner: operator greeting and primary action buttons. -->
         <section class="welcome-panel glass-panel">
-          <img class="small-avatar" src="./assets/images/operator-avatar-emblem.png" alt="Morgan Oakley operator avatar"/>
+          <img class="small-avatar" src="./assets/images/operator-avatar-emblem.png" alt="Clebson Costa operator avatar"/>
           <div class="welcome-copy">
             <p>Welcome back,</p>
-            <h1>Morgan Oakley <span>(@morgan)</span></h1>
+            <h1>Clebson Costa <span>(@clebson)</span></h1>
           </div>
           <div class="orbital-lines" aria-hidden="true"></div>
           <div class="action-row">
@@ -105,6 +131,7 @@
           </div>
         </section>
 
+        <!-- Active Modules: the main project card area of the dashboard. -->
         <section class="modules-section glass-panel">
           <div class="section-header">
             <div class="section-title-group">
@@ -117,10 +144,15 @@
             </div>
           </div>
 
+          <!--
+            Module cards follow the same pattern:
+            image emblem + title/description + small action buttons.
+          -->
           <div class="module-grid">
             <article class="module-card">
               <img class="module-visual module-emblem" src="./assets/images/solar-access-portal-emblem.png" alt="Solar Access Portal emblem"/>
               <div class="module-copy">
+                <!-- Module 1: gateway/access project. -->
                 <h3>Solar Access Portal</h3>
                 <p>Secure gateway for network entry and identity verification across the Solaris Network. Monitor access flows and node integrity.</p>
               </div>
@@ -134,6 +166,7 @@
             <article class="module-card">
               <img class="module-visual module-emblem" src="./assets/images/cyber-solar-calculator-emblem.png" alt="Cyber-Solar Calculator emblem"/>
               <div class="module-copy">
+                <!-- Module 2: calculator/logic project. -->
                 <h3>Cyber-Solar Calculator</h3>
                 <p>Compute solar energy, node output, and network efficiency in real time. Optimize balance between power and performance.</p>
               </div>
@@ -147,6 +180,7 @@
             <article class="module-card">
               <img class="module-visual module-emblem" src="./assets/images/solar-sketch-studio-emblem.png" alt="Solar Sketch Studio emblem" />
               <div class="module-copy">
+                <!-- Module 3: visual creation/grid project. -->
                 <h3>Solar Sketch Studio</h3>
                 <p>Create and prototype visual systems for interfaces, dashboards, and node layouts with live grid alignment tools.</p>
               </div>
@@ -160,6 +194,7 @@
             <article class="module-card">
               <img class="module-visual module-emblem" src="./assets/images/aurelium-landing-grid-emblem.png" alt="Aurelium Landing Grid emblem" />
               <div class="module-copy">
+                <!-- Module 4: landing grid/navigation project. -->
                 <h3>Aurelium Landing Grid</h3>
                 <p>Track and manage landing points, orbital routes, and landing clearances within the Aurelium sector. Stay aligned and safe.</p>
               </div>
@@ -173,6 +208,7 @@
             <article class="module-card">
               <img class="module-visual module-emblem" src="./assets/images/node-authentication-system-emblem.png" alt="Node Authentication System emblem" />
               <div class="module-copy">
+                <!-- Module 5: security/authentication project. -->
                 <h3>Node Authentication System</h3>
                 <p>Manage node credentials, encryption keys, and multi-layer authentication protocols across the Solaris Network.</p>
               </div>
@@ -186,6 +222,7 @@
             <article class="module-card">
               <img class="module-visual module-emblem" src="./assets/images/signal-archive-emblem.png" alt="Signal Archive emblem" />
               <div class="module-copy">
+                <!-- Module 6: archive/data memory project. -->
                 <h3>Signal Archive</h3>
                 <p>Browse, filter, and restore historical transmissions and data logs. Preserve network memory and insights.</p>
               </div>
@@ -198,7 +235,9 @@
           </div>
         </section>
 
+        <!-- Right rail: compact informational panels beside the module grid. -->
         <aside class="right-rail">
+          <!-- System Broadcasts: dashboard announcements/status updates. -->
           <section class="rail-panel glass-panel broadcasts-panel">
             <div class="rail-title">
               <svg><use href="#icon-transmit"></use></svg>
@@ -232,6 +271,7 @@
             <a class="panel-link" href="#">View all broadcasts <span>›</span></a>
           </section>
 
+          <!-- Signal Feed: small live-activity style updates from Solaris nodes/modules. -->
           <section class="rail-panel glass-panel signal-panel">
             <div class="rail-title">
               <svg><use href="#icon-wave"></use></svg>
@@ -239,7 +279,7 @@
             </div>
 
             <article class="signal-row">
-              <div class="feed-avatar aurelium" aria-hidden="true"></div>
+              <img class="signal-avatar" src="./assets/images/signal-feed-aurelium-avatar.png" alt="" />
               <div>
                 <header><h3>@aurelium</h3><time>2m ago</time></header>
                 <p>Interface signal stabilized</p>
@@ -248,7 +288,7 @@
             </article>
 
             <article class="signal-row">
-              <div class="feed-avatar access" aria-hidden="true"></div>
+              <img class="signal-avatar" src="./assets/images/signal-feed-access-node-avatar.png" alt="" />
               <div>
                 <header><h3>@access-node</h3><time>7m ago</time></header>
                 <p>Portal online</p>
@@ -257,7 +297,7 @@
             </article>
 
             <article class="signal-row">
-              <div class="feed-avatar sketch-feed" aria-hidden="true"></div>
+              <img class="signal-avatar" src="./assets/images/signal-feed-solar-sketch-avatar.png" alt="" />
               <div>
                 <header><h3>@solar-sketch</h3><time>12m ago</time></header>
                 <p>Visual grid calibrated</p>
@@ -266,7 +306,7 @@
             </article>
 
             <article class="signal-row">
-              <div class="feed-avatar calc" aria-hidden="true"></div>
+              <img class="signal-avatar" src="./assets/images/signal-feed-calc-core-avatar.png" alt="" />
               <div>
                 <header><h3>@calc-core</h3><time>18m ago</time></header>
                 <p>Logic module synced</p>
@@ -278,6 +318,7 @@
           </section>
         </aside>
 
+        <!-- Decorative internal footer for the dashboard panel itself. -->
         <footer class="solar-footer">
           <span></span>
           <svg><use href="#icon-sun"></use></svg>
@@ -287,6 +328,11 @@
       </main>
     </div>
   </div>
+  <!--
+    SITE FOOTER
+    This footer sits outside the app shell so it can span the full page width.
+    The year is filled dynamically by script.js.
+  -->
   <footer class="site-footer glass-panel">
     <div class="footer-orbit" aria-hidden="true">
       <span></span>
@@ -318,6 +364,7 @@
       </a>
     </nav>
   </footer>
+  <!-- Small JavaScript file used only for the dynamic footer year. -->
   <script src="script.js"></script>
 </body>
 </html>
