@@ -18,8 +18,8 @@ Rather than presenting portfolio projects as isolated cards, this dashboard fram
 - **Technical layout proof** — showcases nested CSS Grid, responsive dashboard architecture, and reusable UI patterns.
 - **Professional visual system** — uses a custom cyber-solar design language with consistent tokens, spacing, glow effects, and asset hierarchy.
 
-**Live Demo:** `[Add GitHub Pages link here]`  
-**Repository:** `[Add GitHub repository link here]`
+**Live Demo:** `[https://progritit.github.io/Admin-Dashboard/]`  
+**Repository:** `[https://github.com/progritit/Admin-Dashboard]`
 
 **Preview:**
 
@@ -221,49 +221,3 @@ solaris-command-center/
 
 - **Responsive layout strategy**
   - Desktop-first dashboard layout with targeted breakpoints for tablet and mobile reflow.
-
----
-
-## 🔧 Local Deployment Guide
-
-### Run locally in under 30 seconds
-
-```bash
-git clone https://github.com/progritit/Solaris-Command-Center.git
-cd Solaris-Command-Center
-python3 -m http.server 5500
-```
-
-Then open:
-
-```txt
-http://localhost:5500
-```
-
-### Windows alternative
-
-```bash
-git clone https://github.com/progritit/Solaris-Command-Center.git
-cd Solaris-Command-Center
-py -m http.server 5500
-```
-
-Then open:
-
-```txt
-http://localhost:5500
-```
-
-### VS Code alternative
-
-```bash
-git clone https://github.com/progritit/Solaris-Command-Center.git
-cd Solaris-Command-Center
-code .
-```
-
-Then start the project with the **Live Server** extension.
-
----
-
-**Built as part of the Solaris Network portfolio system — a connected universe of frontend projects designed to demonstrate layout engineering, visual systems, and product-oriented web development.**
