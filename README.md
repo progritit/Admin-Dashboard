@@ -22,10 +22,7 @@ Rather than presenting portfolio projects as isolated cards, this dashboard fram
 **Repository:** `[https://github.com/progritit/Admin-Dashboard]`
 
 **Preview:**
-
-```md
-![Solaris Command Center dashboard preview](./assets/images/solaris-command-center-preview.png)
-```
+<img width="1902" height="931" alt="solaris-command-center-preview" src="https://github.com/user-attachments/assets/523d3431-ad1b-43e0-8033-0ec877949ac4" />
 
 ---
 
