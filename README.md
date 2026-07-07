@@ -8,7 +8,8 @@ Solaris Command Center is designed as the central interface of the Solaris Netwo
 [Repository](https://github.com/progritit/Admin-Dashboard)
 
 ```md
-![Solaris Command Center screenshot](./assets/images/solaris-command-center-preview.png)
+![Solaris Command Center screenshot](<img width="1902" height="931" alt="solaris-command-center-preview" src="https://github.com/user-attachments/assets/5f7eda65-06d6-4f3d-9760-b5a2308a0069" />
+)
 ```
 
 ---
