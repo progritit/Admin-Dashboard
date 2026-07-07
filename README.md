@@ -18,8 +18,8 @@ Rather than presenting portfolio projects as isolated cards, this dashboard fram
 - **Technical layout proof** — showcases nested CSS Grid, responsive dashboard architecture, and reusable UI patterns.
 - **Professional visual system** — uses a custom cyber-solar design language with consistent tokens, spacing, glow effects, and asset hierarchy.
 
-**Live Demo:** `[https://progritit.github.io/Admin-Dashboard/]`  
-**Repository:** `[https://github.com/progritit/Admin-Dashboard]`
+**Live Demo:** https://progritit.github.io/Admin-Dashboard/  
+**Repository:** https://github.com/progritit/Admin-Dashboard
 
 **Preview:**
 <img width="1902" height="931" alt="solaris-command-center-preview" src="https://github.com/user-attachments/assets/523d3431-ad1b-43e0-8033-0ec877949ac4" />
